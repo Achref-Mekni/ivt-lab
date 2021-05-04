@@ -6,7 +6,9 @@
 	<version>0.5.0-SNAPSHOT</version>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  		<sonar.projectKey>Achref-Mekni_ivt-lab</sonar.projectKey>
+  		<sonar.organization>achref-mekni</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>
