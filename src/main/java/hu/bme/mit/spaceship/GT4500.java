@@ -1,5 +1,7 @@
 package hu.bme.mit.spaceship;
 
+import java.security.NoSuchAlgorithmException;
+
 /**
 * A simple spaceship with two proton torpedo stores and four lasers
 */
@@ -32,14 +34,15 @@ public class GT4500 implements SpaceShip {
   * 	ALL:	tries to fire both of the torpedo stores.
   *
   * @return whether at least one torpedo was fired successfully
+   * @throws NoSuchAlgorithmException
   */
   @Override
-  public boolean fireTorpedo(FiringMode firingMode) {
-
+  public boolean fireTorpedo(FiringMode firingMode) throws NoSuchAlgorithmException  {
+    
     boolean firingSuccess = false;
 
-    switch (firingMode) {
-      case SINGLE:
+    if (firingMode == FiringMode.SINGLE) {
+      //case SINGLE:
         if (wasPrimaryFiredLast) {
           // try to fire the secondary first
           if (! secondaryTorpedoStore.isEmpty()) {
@@ -74,22 +77,25 @@ public class GT4500 implements SpaceShip {
             // if both of the stores are empty, nothing can be done, return failure
           }
         }
-        break;
-
-      case ALL:
+        //break;
+      }
+      else{
+      //case ALL:
         //System.out.println("A+B conflict solved");
         // try to fire both of the torpedo stores
         //TODO implement feature
-        if (! primaryTorpedoStore.isEmpty() & ! secondaryTorpedoStore.isEmpty())
+        if (! primaryTorpedoStore.isEmpty() && ! secondaryTorpedoStore.isEmpty())
         {
           firingSuccess = primaryTorpedoStore.fire(1);
           firingSuccess = secondaryTorpedoStore.fire(1);
         }
 
-        break;
+        //break;
     }
+  
 
     return firingSuccess;
+  
   }
 
 }

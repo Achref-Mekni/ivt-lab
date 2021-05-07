@@ -36,7 +36,7 @@ public class TorpedoStore {
     }
 
     boolean success = false;
-    try{
+    
     // simulate random overheating of the launcher bay which prevents firing
     Random generator = SecureRandom.getInstanceStrong();
     double r = generator.nextDouble();
@@ -49,10 +49,7 @@ public class TorpedoStore {
       // simulated failure
       success = false;
     }
-  }catch(NoSuchAlgorithmException e)
-  {
-    success  = false;
-  }
+  
   
 
     return success;
