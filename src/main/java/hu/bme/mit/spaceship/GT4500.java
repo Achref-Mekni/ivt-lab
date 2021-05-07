@@ -1,5 +1,7 @@
 package hu.bme.mit.spaceship;
 
+import java.security.NoSuchAlgorithmException;
+
 /**
 * A simple spaceship with two proton torpedo stores and four lasers
 */
@@ -32,25 +34,36 @@ public class GT4500 implements SpaceShip {
   * 	ALL:	tries to fire both of the torpedo stores.
   *
   * @return whether at least one torpedo was fired successfully
+   * @throws NoSuchAlgorithmException
   */
   @Override
   public boolean fireTorpedo(FiringMode firingMode) {
-
+    
     boolean firingSuccess = false;
 
-    switch (firingMode) {
-      case SINGLE:
+    if (firingMode == FiringMode.SINGLE) {
+      //case SINGLE:
         if (wasPrimaryFiredLast) {
           // try to fire the secondary first
           if (! secondaryTorpedoStore.isEmpty()) {
-            firingSuccess = secondaryTorpedoStore.fire(1);
+            try {
+              firingSuccess = secondaryTorpedoStore.fire(1);
+            } catch (NoSuchAlgorithmException e) {
+              // TODO Auto-generated catch block
+              //e.printStackTrace();
+            }
             wasPrimaryFiredLast = false;
           }
           else {
             // although primary was fired last time, but the secondary is empty
             // thus try to fire primary again
             if (! primaryTorpedoStore.isEmpty()) {
-              firingSuccess = primaryTorpedoStore.fire(1);
+              try {
+                firingSuccess = primaryTorpedoStore.fire(1);
+              } catch (NoSuchAlgorithmException e) {
+                // TODO Auto-generated catch block
+                //e.printStackTrace();
+              }
               wasPrimaryFiredLast = true;
             }
 
@@ -60,36 +73,55 @@ public class GT4500 implements SpaceShip {
         else {
           // try to fire the primary first
           if (! primaryTorpedoStore.isEmpty()) {
-            firingSuccess = primaryTorpedoStore.fire(1);
+            try {
+              firingSuccess = primaryTorpedoStore.fire(1);
+            } catch (NoSuchAlgorithmException e) {
+              // TODO Auto-generated catch block
+             // e.printStackTrace();
+            }
             wasPrimaryFiredLast = true;
           }
           else {
             // although secondary was fired last time, but primary is empty
             // thus try to fire secondary again
             if (! secondaryTorpedoStore.isEmpty()) {
-              firingSuccess = secondaryTorpedoStore.fire(1);
+              try {
+                firingSuccess = secondaryTorpedoStore.fire(1);
+              } catch (NoSuchAlgorithmException e) {
+                // TODO Auto-generated catch block
+               // e.printStackTrace();
+              }
               wasPrimaryFiredLast = false;
             }
 
             // if both of the stores are empty, nothing can be done, return failure
           }
         }
-        break;
-
-      case ALL:
+        //break;
+      }
+      else{
+      //case ALL:
         //System.out.println("A+B conflict solved");
         // try to fire both of the torpedo stores
         //TODO implement feature
-        if (! primaryTorpedoStore.isEmpty() & ! secondaryTorpedoStore.isEmpty())
+        if (! primaryTorpedoStore.isEmpty() && ! secondaryTorpedoStore.isEmpty())
         {
-          firingSuccess = primaryTorpedoStore.fire(1);
-          firingSuccess = secondaryTorpedoStore.fire(1);
+          try {
+            firingSuccess = primaryTorpedoStore.fire(1);
+            firingSuccess = secondaryTorpedoStore.fire(1);
+          } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            //e.printStackTrace();
+          }
+          
         }
 
-        break;
+        //break;
     }
+  
 
     return firingSuccess;
+  
   }
 
 }

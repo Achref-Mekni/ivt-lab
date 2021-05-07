@@ -1,5 +1,7 @@
 package hu.bme.mit.spaceship;
 
+import java.security.NoSuchAlgorithmException;
+
 /**
 * Defines basic spaceship functionality
 * (collects just the most important ones currently)
@@ -19,6 +21,7 @@ public interface SpaceShip {
   *
   * @param firingMode how many torpedo stores to fire
   * @return whether the fire command was successful
+   * @throws NoSuchAlgorithmException
   */
-  public boolean fireTorpedo(FiringMode firingMode);
+  public boolean fireTorpedo (FiringMode firingMode);
 }
