@@ -37,7 +37,7 @@ public class GT4500 implements SpaceShip {
    * @throws NoSuchAlgorithmException
   */
   @Override
-  public boolean fireTorpedo(FiringMode firingMode) throws NoSuchAlgorithmException  {
+  public boolean fireTorpedo(FiringMode firingMode) {
     
     boolean firingSuccess = false;
 
@@ -46,14 +46,24 @@ public class GT4500 implements SpaceShip {
         if (wasPrimaryFiredLast) {
           // try to fire the secondary first
           if (! secondaryTorpedoStore.isEmpty()) {
-            firingSuccess = secondaryTorpedoStore.fire(1);
+            try {
+              firingSuccess = secondaryTorpedoStore.fire(1);
+            } catch (NoSuchAlgorithmException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
             wasPrimaryFiredLast = false;
           }
           else {
             // although primary was fired last time, but the secondary is empty
             // thus try to fire primary again
             if (! primaryTorpedoStore.isEmpty()) {
-              firingSuccess = primaryTorpedoStore.fire(1);
+              try {
+                firingSuccess = primaryTorpedoStore.fire(1);
+              } catch (NoSuchAlgorithmException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+              }
               wasPrimaryFiredLast = true;
             }
 
@@ -63,14 +73,24 @@ public class GT4500 implements SpaceShip {
         else {
           // try to fire the primary first
           if (! primaryTorpedoStore.isEmpty()) {
-            firingSuccess = primaryTorpedoStore.fire(1);
+            try {
+              firingSuccess = primaryTorpedoStore.fire(1);
+            } catch (NoSuchAlgorithmException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
             wasPrimaryFiredLast = true;
           }
           else {
             // although secondary was fired last time, but primary is empty
             // thus try to fire secondary again
             if (! secondaryTorpedoStore.isEmpty()) {
-              firingSuccess = secondaryTorpedoStore.fire(1);
+              try {
+                firingSuccess = secondaryTorpedoStore.fire(1);
+              } catch (NoSuchAlgorithmException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+              }
               wasPrimaryFiredLast = false;
             }
 
@@ -86,8 +106,14 @@ public class GT4500 implements SpaceShip {
         //TODO implement feature
         if (! primaryTorpedoStore.isEmpty() && ! secondaryTorpedoStore.isEmpty())
         {
-          firingSuccess = primaryTorpedoStore.fire(1);
-          firingSuccess = secondaryTorpedoStore.fire(1);
+          try {
+            firingSuccess = primaryTorpedoStore.fire(1);
+            firingSuccess = secondaryTorpedoStore.fire(1);
+          } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          
         }
 
         //break;
