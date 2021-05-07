@@ -50,7 +50,7 @@ public class GT4500 implements SpaceShip {
               firingSuccess = secondaryTorpedoStore.fire(1);
             } catch (NoSuchAlgorithmException e) {
               // TODO Auto-generated catch block
-              e.printStackTrace();
+              //e.printStackTrace();
             }
             wasPrimaryFiredLast = false;
           }
@@ -62,7 +62,7 @@ public class GT4500 implements SpaceShip {
                 firingSuccess = primaryTorpedoStore.fire(1);
               } catch (NoSuchAlgorithmException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+                //e.printStackTrace();
               }
               wasPrimaryFiredLast = true;
             }
@@ -77,7 +77,7 @@ public class GT4500 implements SpaceShip {
               firingSuccess = primaryTorpedoStore.fire(1);
             } catch (NoSuchAlgorithmException e) {
               // TODO Auto-generated catch block
-              e.printStackTrace();
+             // e.printStackTrace();
             }
             wasPrimaryFiredLast = true;
           }
@@ -89,7 +89,7 @@ public class GT4500 implements SpaceShip {
                 firingSuccess = secondaryTorpedoStore.fire(1);
               } catch (NoSuchAlgorithmException e) {
                 // TODO Auto-generated catch block
-                e.printStackTrace();
+               // e.printStackTrace();
               }
               wasPrimaryFiredLast = false;
             }
@@ -111,7 +111,7 @@ public class GT4500 implements SpaceShip {
             firingSuccess = secondaryTorpedoStore.fire(1);
           } catch (NoSuchAlgorithmException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            //e.printStackTrace();
           }
           
         }
